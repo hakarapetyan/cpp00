@@ -3,6 +3,7 @@ NAME = phonebook
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = PhoneBook.cpp\
+PhoneBook_utils.cpp\
 Contact.cpp\
 main.cpp
 
