@@ -14,7 +14,9 @@ class PhoneBook
     int ft_isdigit_str(string c);
     int empty_check(Contact cont);
     void print_fields();
+    void contact_print(int index);
     string get_input(string str);
+    void check_length(string &first,string &last, string &nick);
 
     private:
     Contact contacts[8];

@@ -43,24 +43,49 @@ void PhoneBook::print_fields()
         first=this->contacts[i].get_firstname();
         last=this->contacts[i].get_lastname();
         nick=this->contacts[i].get_nickname();
-        if (first.length()>10)
-        first.substr(0,9)+'.';
-        if (last.length()>10)
-        last.substr(0,9)+'.';
-        if (nick.length()>10)
-        nick.substr(0,9)+'.';
-    std::cout<<std::setw(10)<<i;
-    std::cout<<std::setw(2)<<"|";
-    std::cout<<std::setw(10)<<first;
-    std::cout<<std::setw(2)<<"|";
-    std::cout<<std::setw(10)<<last;
-    std::cout<<std::setw(2)<<"|";
-    std::cout<<std::setw(10)<<nick<<std::endl;
-    i++;
+        check_length(first,last,nick);
+        std::cout<<std::setw(10)<<i;
+        std::cout<<std::setw(2)<<"|";
+        std::cout<<std::setw(10)<<first;
+        std::cout<<std::setw(2)<<"|";
+        std::cout<<std::setw(10)<<last;
+        std::cout<<std::setw(2)<<"|";
+        std::cout<<std::setw(10)<<nick<<std::endl;
+        i++;
+    } 
     }  
+
+void PhoneBook::contact_print(int index)
+{
+    std::cout<<"Index: "<<index + 1<<std::endl;
+    std::cout<<"First_name: "<<this->contacts[index].get_firstname()<<std::endl;
+    std::cout<<"Last_name: "<<this->contacts[index].get_lastname()<<std::endl;
+    std::cout<<"Nick_name: "<<this->contacts[index].get_nickname()<<std::endl;
+    std::cout<<"Phonenumber: "<<this->contacts[index].get_phonenumber()<<std::endl;
+    std::cout<<"Darksecret: "<<this->contacts[index].get_darksecret()<<std::endl;
+
 }
 void PhoneBook::search()
 {
+    string str;
+    int index =0;
 
-        print_fields();
+    print_fields();
+    str=get_input("\033[32mWrite only one index(symbol) from the range 1-8\033[0m");
+    index = str[0] - '1';
+    if (str.length() > 1 || str[0] < '1' || str[0] > '8')
+    {
+        std::cout<<"\033[33mWrong index,hargelis\033[37m"<<std::endl;
+        return ;
+    }
+    // std::cout<<'|'<<this->contacts[index].get_firstname()<<'|'<<std::endl;
+    if(this->contacts[index].get_firstname().empty())
+    {
+        std::cout<<"\033[33mNo contact found at this index,hargelis\033[37m"<<std::endl;
+        return ;
+    }
+    contact_print(index);
+    
+    return ;
+
 }

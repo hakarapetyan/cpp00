@@ -29,3 +29,12 @@ int PhoneBook::ft_isdigit_str(string c)
     }
 	return (1);
 }
+void PhoneBook::check_length(string &first,string &last, string &nick)
+{
+        if (first.length()>10)
+        first=first.substr(0,9)+'.';
+        if (last.length()>10)
+        last=last.substr(0,9)+'.';
+        if (nick.length()>10)
+        nick=nick.substr(0,9)+'.';
+}

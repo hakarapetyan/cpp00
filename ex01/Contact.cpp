@@ -1,7 +1,9 @@
 #include "Contact.hpp"
 
 Contact :: Contact()
-{return ;}
+{
+    first_name = "";
+    return ;}
 Contact :: ~Contact()
 {return ;}
 void Contact :: set_firstname(string str)
