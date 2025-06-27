@@ -71,14 +71,13 @@ void PhoneBook::search()
     int index =0;
 
     print_fields();
-    str=get_input("\033[32mWrite only one index(symbol) from the range 1-8\033[0m");
-    index = str[0] - '1';
-    if (str.length() > 1 || str[0] < '1' || str[0] > '8')
+    str=get_input("\033[32mWrite only one index(symbol) from the range 0-7\033[0m");
+    index = str[0] - '0';
+    if (str.length() > 1 || str[0] < '0' || str[0] > '7')
     {
         std::cout<<"\033[33mWrong index,hargelis\033[37m"<<std::endl;
         return ;
     }
-    // std::cout<<'|'<<this->contacts[index].get_firstname()<<'|'<<std::endl;
     if(this->contacts[index].get_firstname().empty())
     {
         std::cout<<"\033[33mNo contact found at this index,hargelis\033[37m"<<std::endl;
